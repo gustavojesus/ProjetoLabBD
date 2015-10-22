@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Grupos;
 import persistence.GruposDAO;
+import persistence.TimesDAO;
 
 /**
  * Servlet implementation class GruposControlServlet
@@ -34,36 +35,42 @@ public class GruposControlServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		carregarGrupo(request, response);
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		carregarGrupo(request, response);
+		
 	}
 	
 	
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		List<Grupos>lista =new ArrayList<Grupos>();
+	protected void carregarGrupo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String resp="distribuição dos Grupos com sucesso.";
 		String erro="";
-		GruposDAO gDao=new GruposDAO();
+		
+		GruposDAO gDao = new GruposDAO();
+		
 		try {
-			lista=gDao.listaGrupos();
+			gDao.criarGrupos();
+			gDao.carregarGrupos(1);
+			
+			request.setAttribute("erro", erro);
+			request.setAttribute("resp", resp);
+			RequestDispatcher view = request.getRequestDispatcher("gerarGrupos.jsp");
+			view.forward(request, response);
+			
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-		
-		request.setAttribute("erro", erro);
-		request.setAttribute("lista", lista);
-		RequestDispatcher view = request.getRequestDispatcher("pagna.jsp");
-		view.forward(request, response);
-		
 		}
+	
 	}
+	 
+	
+	
 
 }

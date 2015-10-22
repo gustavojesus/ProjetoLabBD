@@ -33,14 +33,14 @@ public class TimesDAO {
    		 t.setNomeTime(rs.getString("nometime"));
    		 t.setCidade(rs.getString("cidade"));
    		 t.setEstadio(rs.getString("estadio"));
-   		 
+   		 System.out.println(t.getCodigoTime());
    		 lista.add(t);
    		 
    	 }
    	 rs.close();
    	 ps.close();
    	 
-		return null;
+		return lista;
    	 
    	 
    	 

@@ -4,7 +4,8 @@ public class Grupos {
 	
 	private int codigoGrupo;
 	private String grupo;
-	private int codTime;
+	private Times nomeTime;
+	
 	
 	
 	public int getCodigoGrupo() {
@@ -19,12 +20,14 @@ public class Grupos {
 	public void setGrupo(String grupo) {
 		this.grupo = grupo;
 	}
-	public int getCodTime() {
-		return codTime;
+	
+	public Times getNomeTime() {
+		return nomeTime;
 	}
-	public void setCodTime(int codTime) {
-		this.codTime = codTime;
+	public void setNomeTime(Times nomeTime) {
+		this.nomeTime = nomeTime;
 	}
+	
 	
 	
 	
