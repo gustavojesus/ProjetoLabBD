@@ -59,7 +59,7 @@ public class TimesControlServlet extends HttpServlet {
 		
 		request.setAttribute("erro", erro);
 		request.setAttribute("lista", lista);
-		RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("carregarTimes.jsp");
 		view.forward(request, response);
 		
 		}
